@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AutoComplete_in_ListView"
+             xmlns:controls="clr-namespace:AutoComplete_in_ListView.Controls;assembly=AutoComplete_in_ListView"
+             x:Class="AutoComplete_in_ListView.AutoCompletePage"
+             Title="Demo autocomplete">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <DataTemplate x:Key="DefaultEntryTemplate">
+                <ViewCell>
+                    <Entry Placeholder="Entry" Text="{Binding Value, Mode=TwoWay}" />
+                </ViewCell>
+            </DataTemplate>
+
+            <DataTemplate x:Key="AutoCompleteEntryTemplate">
+                <ViewCell>
+                    <controls:AutoCompleteEntry Placeholder="AutoComplete" Text="{Binding Value, Mode=TwoWay}" Suggestions="{Binding SelectionList}" />
+                </ViewCell>
+            </DataTemplate>
+
+            <local:RlcDataTemplateSelector x:Key="RlcDataTemplateSelector"
+                                               DefaultEntryTemplate="{StaticResource DefaultEntryTemplate}"
+                                               
+                                               AutoCompleteDataTemplate="{StaticResource AutoCompleteEntryTemplate}"/>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Margin="16,0">
+        <ListView x:Name="ListView" ItemsSource="{Binding AvailableRlcParameter}" ItemTemplate="{StaticResource RlcDataTemplateSelector}" />
+    </StackLayout>
+
+</ContentPage>
