@@ -11,6 +11,10 @@ namespace AutoComplete_in_ListView.Models
 
         public string ParamType { get; set; }
 
+        public DateTime Date { get; set; }
+
+        public TimeSpan Time { get; set; }
+
         public List<string> SelectionList { get; set; }
     }
 }

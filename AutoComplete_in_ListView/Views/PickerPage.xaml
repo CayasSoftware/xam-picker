@@ -20,10 +20,27 @@
                     <Picker Title="Picker" ItemsSource="{Binding SelectionList}" SelectedItem="{Binding Value, Mode=TwoWay}" />
                 </ViewCell>
             </DataTemplate>
+            
+            <DataTemplate x:Key="DatePickerEntryTemplate">
+                <ViewCell>
+                    <DatePicker Date="{Binding Value, Mode=TwoWay}" />
+                </ViewCell>
+            </DataTemplate>
+            
+            <DataTemplate x:Key="DateTimePickerEntryTemplate">
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal">
+                        <DatePicker Date="{Binding Date, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
+                        <TimePicker Time="{Binding Time, Mode=TwoWay}" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
 
             <local:RlcDataTemplateSelector x:Key="RlcDataTemplateSelector"
                                                DefaultEntryTemplate="{StaticResource DefaultEntryTemplate}"
-                                               PickerEntryTemplate="{StaticResource PickerEntryTemplate}"/>
+                                               PickerEntryTemplate="{StaticResource PickerEntryTemplate}"
+                                               DatePickerEntryTemplate="{StaticResource DatePickerEntryTemplate}"
+                                               DateTimePickerEntryTemplate="{StaticResource DateTimePickerEntryTemplate}" />
 
         </ResourceDictionary>
     </ContentPage.Resources>

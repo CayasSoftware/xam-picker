@@ -12,6 +12,11 @@ namespace AutoComplete_in_ListView
 
         public DataTemplate AutoCompleteDataTemplate { get; set; }
 
+        public DataTemplate DatePickerEntryTemplate { get; set; }
+
+        public DataTemplate DateTimePickerEntryTemplate { get; set; }
+
+
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
             var rlcParameterItem = item as RlcParameterItem;
@@ -24,6 +29,10 @@ namespace AutoComplete_in_ListView
                     return DefaultEntryTemplate;
                 case "V":
                     return AutoCompleteDataTemplate;
+                case "D":
+                    return DatePickerEntryTemplate;
+                case "DT":
+                    return DateTimePickerEntryTemplate;
                 default:
                     return DefaultEntryTemplate;
             }
